@@ -3,7 +3,7 @@
 /*
 Plugin Name: WPU Index Meta
 Description: Handle indexes for meta values and more
-Version: 0.2.0
+Version: 0.3.0
 Plugin URI: https://github.com/WordPressUtilities/wpuindexmeta
 Author: Darklg
 Author URI: https://darklg.me/
@@ -97,7 +97,7 @@ class WPUIndexMeta {
 
                     /* ADD FIELD TO SELECT */
                     if ($value['table'] == 'posts') {
-                        $select_fields[] = $table_alias . '.' . $key;
+                        $select_fields[] = isset($value['custom']) ? $value['custom'] : $table_alias . '.' . $key;
                     } elseif ($value['table'] == 'postmeta') {
                         $conditions_fields[] = "AND $table_alias.meta_key='" . esc_sql($key) . "'";
                         $select_fields[] = $table_alias . '.meta_value';
